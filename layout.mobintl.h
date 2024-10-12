@@ -344,7 +344,7 @@ static struct key keys_special[] = {
   {"", "", 0.0, EndRow},
 
   {"CpL", "CpL", 1.0, Mod, CapsLock, .scheme = 1},
-  {"Sup", "Sup", 1.0, Mod, Super, .scheme = 1},
+  {"", "", 1.0, Mod, Super, .scheme = 1},
   {"`", "~", 1.0, Code, KEY_GRAVE},
   {"'", "\"", 1.0, Code, KEY_APOSTROPHE},
   {"-", "_", 1.0, Code, KEY_MINUS},
@@ -416,7 +416,7 @@ static struct key keys_specialpad[] = {
   {"⌨͕", "⌨͔", 1.0, NextLayer, .scheme = 1},
   {"Ctr", "Ctr", 1.0, Mod, Ctrl, .scheme = 1},
   {"Alt", "Alt", 1.0, Mod, Alt, .scheme = 1},
-  {"Sup", "Sup", 1.0, Mod, Super, .scheme = 1},
+  {"", "", 1.0, Mod, Super, .scheme = 1},
 
   {"⇤", "⇤", 1.0, Code, KEY_HOME, .scheme = 1},
   {"⇥", "⇥", 1.0, Code, KEY_END, .scheme = 1},
@@ -1210,7 +1210,7 @@ static struct key keys_landscape_special[] = {
   {"Abc", "Abc", 1.0, BackLayer, .scheme = 1},
   {"⌨͕", "⌨͔", 1.0, NextLayer, .scheme = 1},
   {"Ctr", "Ctr", 1.0, Mod, Ctrl, .scheme = 1},
-  {"Sup", "Sup", 1.0, Mod, Super, .scheme = 1},
+  {"", "", 1.0, Mod, Super, .scheme = 1},
   {"", "Tab", 5.0, Code, KEY_SPACE},
   {"Alt", "Alt", 1.0, Mod, Alt, .scheme = 1},
   {"AGr", "AGr", 1.0, Mod, AltGr, .scheme = 1},
