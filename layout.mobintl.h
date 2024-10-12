@@ -1150,8 +1150,10 @@ static struct key keys_landscape[] = {
   {"i", "I", 1.0, Code, KEY_I, &layouts[ComposeI]},
   {"o", "O", 1.0, Code, KEY_O, &layouts[ComposeO]},
   {"p", "P", 1.0, Code, KEY_P, &layouts[ComposeP]},
-  {"", "", 0.5, Pad, .scheme = 1},
-  {"Tab", "Tab", 1.0, Code, KEY_TAB, .scheme = 1},
+  {"[", "{", 0.468, Code, KEY_LEFTBRACE},
+  {"]", "}", 0.468, Code, KEY_RIGHTBRACE},
+  {"\\", "|", 0.468, Code, KEY_BACKSLASH, .scheme = 1},
+  {"", "", 0.04, Pad},
   {"", "", 0.0, EndRow},
 
   {"↑", "↑", 0.75, Code, KEY_UP, .scheme = 1},
