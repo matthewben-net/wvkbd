@@ -1103,7 +1103,7 @@ static struct key keys_index[] = {
 
 static struct key keys_landscape[] = {
   {"", "", 0.05, Pad},
-  {"Esc", "Esc", 1.0, Code, KEY_ESC, .scheme = 1},
+  {"⎋", "⎋", 1.0, Code, KEY_ESC, .scheme = 1},
   {"F1", "F1", 1.0, Code, KEY_F1, .scheme = 1},
   {"F2", "F2", 1.0, Code, KEY_F2, .scheme = 1},
   {"F3", "F3", 1.0, Code, KEY_F3, .scheme = 1},
@@ -1170,7 +1170,7 @@ static struct key keys_landscape[] = {
   {"l", "L", 1.0, Code, KEY_L, &layouts[ComposeL]},
   {";", ":", 0.5, Code, KEY_SEMICOLON},
   {"'", "''", 0.5, Code, KEY_APOSTROPHE, &layouts[ComposeBracket]},
-  {"Enter", "Enter", 1.0, Code, KEY_ENTER, .scheme = 1},
+  {"󰌑", "󰌑", 1.0, Code, KEY_ENTER, .scheme = 1},
   {"", "", 0.05, Pad},
   {"", "", 0.0, EndRow},
 
