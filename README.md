@@ -1,6 +1,27 @@
 # wvkbd - On-screen keyboard for wlroots that sucks less
 
-<img src="https://raw.githubusercontent.com/jjsullivan5196/wvkbd/master/contrib/wvkbd-mobintl.jpg" width=300 /> <img src="https://raw.githubusercontent.com/jjsullivan5196/wvkbd/master/contrib/wvkbd-mobintl-cyrillic.jpg" width=300 />
+This fork builds off of the awesome full-sized layout that [nine7nine made](https://github.com/nine7nine/wvkbd-n7n).
+
+The main changes I've made are:
+
+ * Sizing tweaks that make the outer keys uniformly decrease in width
+ * Using updated icons for super, ctrl, escape, and alt
+ * Broken the color styling up into smaller sections so that the main keys, external keys, arrow keys, and enter button can have their own catppucin-derived colors
+
+My usecase for this is a Microsoft Surface Pro 7 running Hyprland on EndeavourOS, so I needed something to match this aesthetic while still offering a full-sized layout.
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/matthewben-net/wvkbd/master/contrib/Surface_Wvkbd_Screenshot.png" width=80%/> 
+</div>
+
+The radius value for the keys is configurable thanks to a recent update from the main repo, and can be set using the "-R <number>" flag when launching the keyboard. I use the following snippet in a shell script that I can then call from whatever method I want to use to toggle the keyboard (either with a button in my bar, or with a hyprgrass gesture).
+
+```
+pidof wvkbd-mobintl && killall wvkbd-mobintl || wvkbd-mobintl -R 18
+```
+
+
+---
 
 This project aims to deliver a minimal but practically usable implementation of a wlroots on-screen
 keyboard in legible C. This will **only** be a keyboard, not a feedback buzzer,
