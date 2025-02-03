@@ -1,6 +1,6 @@
 # wvkbd - On-screen keyboard for wlroots that sucks less
 
-<img src="https://raw.githubusercontent.com/proycon/wvkbd/master/contrib/wvkbd-mobintl.jpg" width=300 /> <img src="https://raw.githubusercontent.com/proycon/wvkbd/master/contrib/wvkbd-mobintl-cyrillic.jpg" width=300 />
+<img src="https://raw.githubusercontent.com/jjsullivan5196/wvkbd/master/contrib/wvkbd-mobintl.jpg" width=300 /> <img src="https://raw.githubusercontent.com/jjsullivan5196/wvkbd/master/contrib/wvkbd-mobintl-cyrillic.jpg" width=300 />
 
 This project aims to deliver a minimal but practically usable implementation of a wlroots on-screen
 keyboard in legible C. This will **only** be a keyboard, not a feedback buzzer,
@@ -25,7 +25,7 @@ new features.
  - Automatic portrait/landscape detection and subsequent layout switching
 
 
-<img src="https://raw.githubusercontent.com/proycon/wvkbd/master/contrib/wvkbd-mobintl-landscape.jpg" width=640 />
+<img src="https://raw.githubusercontent.com/jjsullivan5196/wvkbd/master/contrib/wvkbd-mobintl-landscape.jpg" width=640 />
 
 There are some areas that still need work:
 
@@ -41,6 +41,8 @@ You'll need the following developer packages
  - pango
  - wayland-client
  - xkbcommon
+
+You also need [scdoc](https://git.sr.ht/~sircmpwn/scdoc/) to generate the documentation.
 
 Make any customizations you would like in `config.def.h` and run `make`
 

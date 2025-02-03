@@ -65,7 +65,7 @@ static struct drw draw_ctx;
 static struct drwsurf draw_surf, popup_draw_surf;
 
 /* layer surface parameters */
-static uint32_t layer = ZWLR_LAYER_SHELL_V1_LAYER_TOP;
+static uint32_t layer = ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY;
 static uint32_t anchor = ZWLR_LAYER_SURFACE_V1_ANCHOR_BOTTOM |
                          ZWLR_LAYER_SURFACE_V1_ANCHOR_LEFT |
                          ZWLR_LAYER_SURFACE_V1_ANCHOR_RIGHT;
@@ -132,6 +132,7 @@ static void layer_surface_configure(void *data,
 static void layer_surface_closed(void *data,
                                  struct zwlr_layer_surface_v1 *surface);
 static void flip_landscape();
+static void show();
 
 /* event handlers */
 static const struct wl_pointer_listener pointer_listener = {
@@ -560,12 +561,7 @@ flip_landscape()
     if (current_output) {
         keyboard.landscape = current_output->w > current_output->h;
     } else if (wl_outputs_size) {
-        for (int i = 0; i < wl_outputs_size; i += 1) {
-            if (wl_outputs[i].w > wl_outputs[i].h) {
-                keyboard.landscape = true;
-                break;
-            }
-        }
+        keyboard.landscape = wl_outputs[0].w > wl_outputs[0].h;
     }
 
     enum layout_id layer;
@@ -583,10 +579,25 @@ flip_landscape()
     keyboard.last_abc_layout = keyboard.layout;
     keyboard.last_abc_index = 0;
 
-    if (layer_surface) {
-        zwlr_layer_surface_v1_set_size(layer_surface, 0, height);
-        zwlr_layer_surface_v1_set_exclusive_zone(layer_surface, height);
-        wl_surface_commit(draw_surf.surf);
+    if (layer_surface && previous_landscape != keyboard.landscape) {
+        if (popup_xdg_popup) {
+            xdg_popup_destroy(popup_xdg_popup);
+            popup_xdg_popup = NULL;
+        }
+        if (popup_xdg_surface) {
+            xdg_surface_destroy(popup_xdg_surface);
+            popup_xdg_surface = NULL;
+        }
+        if (popup_draw_surf.surf) {
+            wl_surface_destroy(popup_draw_surf.surf);
+            popup_draw_surf.surf = NULL;
+        }
+
+        zwlr_layer_surface_v1_destroy(layer_surface);
+        layer_surface = NULL;
+        wl_surface_destroy(draw_surf.surf);
+
+        show();
     }
 }
 
@@ -1030,6 +1041,9 @@ main(int argc, char **argv)
     if (vkbd_mgr == NULL) {
         die("virtual_keyboard_manager not available\n");
     }
+
+    // A second round-trip to receive wl_outputs events
+    wl_display_roundtrip(display);
 
     empty_region = wl_compositor_create_region(compositor);
     popup_xdg_positioner = xdg_wm_base_create_positioner(wm_base);
